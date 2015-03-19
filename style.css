@@ -1,0 +1,22 @@
+
+.line {
+  stroke: #a0a0a0;
+}
+.rect {
+  fill: #a0a0a0;
+}
+
+stop {
+  stop-color: #a0a0a0;
+}
+
+#svg {
+  width: 100%;
+  height: 100%;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+

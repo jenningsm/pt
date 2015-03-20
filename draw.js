@@ -54,16 +54,18 @@ function createCorners(){
   corners.push([40,vertpos]);
   
   while(vertpos < 50){
-    vertpos += (.7 + .3 * ((50 - vertpos) / 50)) * 50 / 10;
+    vertpos += 3.5;
+    //vertpos += (.7 + .3 * Math.random()) * 10;
     vertpos = Math.min(50, vertpos);
-    corners.push([(250 / Math.max(1, vertpos - 3)) * Math.random(), vertpos]);
+    var length = 3 + 47 * Math.random() * Math.pow((50 - vertpos) / 50, 1.2);
+    corners.push([length, vertpos]);
   }
 
   return corners;
 }
 
 function drawBoxes(corners){
-  var width = 2;
+  var width = 1.2;
   
   for(var i = 1; i < corners.length; i++){
     var corner = corners[i];
@@ -82,7 +84,8 @@ function drawBoxes(corners){
       tail.style.fill = "url(#" + (j === 0 ? 'right' : 'left') + "-horz-grad)";
     }  
 
-    var verts = Math.floor(Math.abs(randomGaussian()) * 1.5 );
+    var verts = 1 + Math.floor(Math.random() * corner[0] * .25);
+//    verts = 0;
     for(var j = 0; j < verts; j++){
       var spot = Math.random() * corner[0];
       for(var k = 0; k < 2; k++){
@@ -91,7 +94,7 @@ function drawBoxes(corners){
       }
     }
  
-    var tailsize = .4 + Math.random() * .4;
+    var tailsize = .4 + Math.random() * .6;
     tailsize *= 2;
     var uptail = (corner[0] > corners[i-1][0] ? tailsize : 0);
     var downtail = (i === corners.length - 1 || corner[0] > corners[i+1][0] ? tailsize : 0);
